@@ -1,0 +1,13 @@
+name,age,gender,occupation,marital_status,education_level,annual_income,residential_location,vehicle_make,vehicle_age,engine_size,mileage_driven_annually,accident_history,traffic_violations,claims_history,license_duration
+RBPWN,60,M,Student,Divorced,None,145000,Rural,BMW,3,2,16000,2,0,1,15
+DTYMF,62,M,Manager,Widowed,PhD,125000,Urban,Tesla,11,4,8000,3,0,3,1
+YUODC,56,M,Student,Divorced,PhD,95000,Urban,Mercedes,14,4,13000,2,1,0,39
+YWGQD,49,F,Lawyer,Married,Master,55000,Rural,Ford,11,2.5,15000,2,4,1,38
+QJITZ,33,F,Student,Single,Bachelor,30000,Rural,Ford,2,2,13000,0,1,0,29
+YKSUE,49,F,Architect,Married,None,135000,Rural,Nissan,5,3.5,11000,2,0,2,20
+TDMWJ,33,M,Doctor,Divorced,None,70000,Urban,Tesla,8,1.5,19000,3,2,1,29
+KBHPM,68,M,Architect,Widowed,None,45000,Urban,Mercedes,5,1.5,6000,0,0,0,33
+TVRCU,42,M,Architect,Single,None,35000,Suburban,Toyota,3,1.5,6000,3,0,0,11
+CQDKR,51,M,Architect,Divorced,Master,60000,Rural,Audi,14,4,5000,3,3,0,15
+WVHMU,56,F,Retired,Widowed,PhD,65000,Rural,Mercedes,7,2.5,9000,1,1,3,37
+TYLKQ,47,F,Retired,Widowed,None,90000,Suburban,Ford,7,2,19000,2,1,0,35

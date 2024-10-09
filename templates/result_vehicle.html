@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assessment Result</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background: linear-gradient(135deg, #565e5d, #ACB6E5); /* New background */
+        margin: 0;
+        padding: 0;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.9); /* Light glassy container */
+        backdrop-filter: blur(10px); /* Glass effect */
+        padding: 50px;
+        margin: 50px auto;
+        border-radius: 20px;
+        max-width: 1200px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Deep shadow */
+        transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .container:hover {
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        transform: translateY(-10px);
+    }
+
+    h1 {
+        color: #333;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+    }
+
+    .three-d-text {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #333;
+        position: relative;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        text-shadow: 3px 3px 0px #ACB6E5, 9px 9px 0px rgba(0, 0, 0, 0.2); /* 3D text */
+    }
+
+    #insuranceChart {
+        margin-top: 30px;
+    }
+
+    .btn-primary {
+        background: linear-gradient(to right, #74ebd5, #ACB6E5);
+        border: none;
+        font-weight: 700;
+        color: #333;
+        padding: 12px 25px;
+        margin-top: 30px;
+        text-decoration: none;
+        border-radius: 25px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(to right, #ACB6E5, #74ebd5);
+        color: white;
+        transform: translateY(-3px);
+    }
+
+    .center-button {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    /* Responsive styling */
+    @media (max-width: 768px) {
+        .container {
+            padding: 30px 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .three-d-text {
+            font-size: 2.5rem;
+        }
+    }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="three-d-text">Risk Level: {{ risk_level }}</h1>
+    <h1>Insurance Amount: ${{ amount }}</h1>
+
+    <!-- Canvas for Line Chart -->
+    <canvas id="insuranceChart" width="400" height="200"></canvas>
+
+    <!-- Back to Home Button -->
+    <div class="center-button">
+        <a href="/" class="btn-primary">Back to Home</a>
+    </div>
+</div>
+
+<script>
+// Passing the risk level and amount from Flask to JavaScript
+var riskLevel = "{{ risk_level }}";  // Ensure risk level is passed as a string
+var amount = {{ amount }};           // This is a numeric value
+
+// Assign numerical values based on risk level
+var riskLevelValue;
+if (riskLevel === 'Low') riskLevelValue = 1;
+else if (riskLevel === 'Medium') riskLevelValue = 2;
+else riskLevelValue = 3;
+
+// Rendering the Line Chart
+var ctx = document.getElementById('insuranceChart').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'line', // Change chart type to line
+    data: {
+        labels: ['Risk Level', 'Amount'],  // X-axis labels
+        datasets: [{
+            label: 'Insurance Data',
+            data: [riskLevelValue, amount], // Assign y-values
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',  // Transparent background
+            borderColor: 'rgba(54, 162, 235, 1)',        // Line color
+            borderWidth: 2,
+            fill: false,  // No fill below the line
+            tension: 0.1  // Line smoothing
+        }]
+    },
+    options: {
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        // Display risk level as a string in the tooltip for the first point
+                        if (context.dataIndex === 0) {
+                            return 'Risk Level: ' + riskLevel; // Display risk level directly
+                        } else {
+                            return 'Amount: $' + amount; // Display amount
+                        }
+                    }
+                }
+            },
+            legend: {
+                display: false // Hide legend if not needed
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    color: '#333',  // Ensure tick marks are visible
+                    stepSize: 1,    // Set step size to match risk level increments
+                    callback: function(value, index, values) {
+                        // Display risk levels for the y-axis
+                        if (value === 1) return 'Low';
+                        if (value === 2) return 'Medium';
+                        if (value === 3) return 'High';
+                        return value; // Return actual amount for the second point
+                    }
+                }
+            },
+            x: {
+                ticks: {
+                    color: '#333'  // Ensure x-axis labels are visible
+                }
+            }
+        }
+    }
+});
+</script>
+
+</body>
+</html>

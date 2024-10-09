@@ -1,0 +1,8 @@
+python -m venv venv
+source venv/bin/activate
+pip install Flask
+pip install -r requirements.txt
+python data_generation.py 
+python preprocessing.py 
+python model_training.py
+python app.py 

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Insurance Risk Assessment</title>
+    <style>/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #5c5168, #3e7e83); /* Gradient background */
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    flex-direction: column;
+}
+
+
+.container {
+    background: rgba(255, 255, 255, 0.9); /* Transparent white background */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    overflow-y: auto; /* Allows scroll if content overflows */
+    backdrop-filter: blur(10px); /* Subtle blur effect */
+}
+
+h1 {
+    text-align: center;
+    color: #2575fc; /* Blue color for header */
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Structure */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+input[type="number"], select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus, select:focus {
+    border-color: #2575fc;
+    outline: none;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+button:active {
+    background-color: #1e7e34;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    input[type="number"], select {
+        padding: 10px;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Insurance Risk Assessment</h1>
+        <form action="/vehicle/form" method="POST">
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="occupation">Occupation:</label>
+                <select id="occupation" name="occupation" required>
+                    <option value="Engineer">Engineer</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Lawyer">Lawyer</option>
+                    <option value="Student">Student</option>
+                    <option value="Retired">Retired</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Architect">Architect</option>
+                    <option value="Artist">Artist</option>
+                    <option value="Manager">Manager</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="marital_status">Marital Status:</label>
+                <select id="marital_status" name="marital_status" required>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Widowed">Widowed</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="education_level">Education Level:</label>
+                <select id="education_level" name="education_level" required>
+                    <option value="Bachelor">Bachelor</option>
+                    <option value="Master">Master</option>
+                    <option value="PhD">PhD</option>
+                    <option value="None">None</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="annual_income">Annual Income:</label>
+                <input type="number" id="annual_income" name="annual_income" required>
+            </div>
+
+            <div class="form-group">
+                <label for="residential_location">Residential Location:</label>
+                <select id="residential_location" name="residential_location" required>
+                    <option value="Urban">Urban</option>
+                    <option value="Rural">Rural</option>
+                    <option value="Suburban">Suburban</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="vehicle_make">Vehicle Make:</label>
+                <select id="vehicle_make" name="vehicle_make" required>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Ford">Ford</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                    <option value="Tesla">Tesla</option>
+                    <option value="Mercedes">Mercedes</option>
+                    <option value="Audi">Audi</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="vehicle_age">Vehicle Age (in years):</label>
+                <input type="number" id="vehicle_age" name="vehicle_age" required>
+            </div>
+
+            <div class="form-group">
+                <label for="engine_size">Engine Size (in liters):</label>
+                <input type="number" step="0.1" id="engine_size" name="engine_size" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mileage_driven_annually">Annual Mileage Driven:</label>
+                <input type="number" id="mileage_driven_annually" name="mileage_driven_annually" required>
+            </div>
+
+            <div class="form-group">
+                <label for="accident_history">Number of Accidents:</label>
+                <input type="number" id="accident_history" name="accident_history" required>
+            </div>
+
+            <div class="form-group">
+                <label for="traffic_violations">Number of Traffic Violations:</label>
+                <input type="number" id="traffic_violations" name="traffic_violations" required>
+            </div>
+
+            <div class="form-group">
+                <label for="claims_history">Number of Claims:</label>
+                <input type="number" id="claims_history" name="claims_history" required>
+            </div>
+
+            <div class="form-group">
+                <label for="license_duration">License Duration (in years):</label>
+                <input type="number" id="license_duration" name="license_duration" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Calculate Risk</button>
+            </div>
+              <div class="option-container">
+       
+
+              
+        </form>
+    </div>
+</body>
+</html>

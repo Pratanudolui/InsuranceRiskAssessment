@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Custom styles -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #565e5d, #ACB6E5);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 50px auto;
+            border-radius: 20px;
+            max-width: 1200px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .container:hover {
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transform: translateY(-10px);
+        }
+
+        .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    padding: 30px;
+    background: #fff;
+    border: none;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.card img {
+    height: 120px;
+    width: 120px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    display: block;
+    object-fit: contain;
+}
+        .btn-primary {
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            border: none;
+            font-weight: 700;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(to right, #ACB6E5, #74ebd5);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+.three-d-text {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    transition: 0.3s;
+    /* 3D text shadow */
+    text-shadow: 3px 3px 0px #ACB6E5, /* Top-left shadow */
+                 , /* Bottom-right shadow */
+                 9px 9px 0px rgba(0, 0, 0, 0.2); /* Additional shadow for depth */
+}
+
+
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+       <header class="text-center mb-5">
+    <h1 class="three-d-text">Vehicle Dashboard</h1>
+</header>
+
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="static/details.png" alt="Add Vehicle Details">
+                    <h5 class="card-title"></h5>
+                    <a href="{{ url_for('vehicle_form') }}" target="_blank" class="btn btn-primary">Enter the Details</a>
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                 
+                    <img src="static/import.png" alt="Import Vehicle Data">
+                    <h5 class="card-title"></h5>
+                     <a href="{{ url_for('upload_file') }}" target="_blank" class="btn btn-primary">Upload File</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Vehicle Management System</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

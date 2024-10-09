@@ -1,0 +1,114 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #5c5168, #3e7e83); /* Gradient background */
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    flex-direction: column;
+}
+
+
+.container {
+    background: rgba(255, 255, 255, 0.9); /* Transparent white background */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    overflow-y: auto; /* Allows scroll if content overflows */
+    backdrop-filter: blur(10px); /* Subtle blur effect */
+}
+
+h1 {
+    text-align: center;
+    color: #2575fc; /* Blue color for header */
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Structure */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+input[type="number"], select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus, select:focus {
+    border-color: #2575fc;
+    outline: none;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+button:active {
+    background-color: #1e7e34;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    input[type="number"], select {
+        padding: 10px;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
